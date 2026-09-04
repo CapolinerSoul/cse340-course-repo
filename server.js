@@ -22,7 +22,6 @@ app.set('view engine', 'ejs');
 // Tell Express where to find your templates
 app.set('views', path.join(__dirname, 'src/views'));
 
-// FIX: Changed app.set to app.use
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
@@ -41,6 +40,11 @@ app.get('/organizations', async (req, res) => {
 app.get('/projects', async (req, res) => {
     const title = 'Service Projects';
     res.render('projects', { title });
+});
+
+app.get('/categories', async (req, res) => {
+    const title = 'Categories';
+    res.render('categories', { title });
 });
 
 app.listen(PORT, () => {
