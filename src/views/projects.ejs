@@ -2,7 +2,7 @@
 <main>
     <h1><%= title %></h1>
     <h2>Upcoming Service Projects</h2>
-<ul>
+<ul class="project-list">
   <% projects.forEach(project => { %>
     <li>
       <%= new Date(project.date).toLocaleDateString("en-US", {

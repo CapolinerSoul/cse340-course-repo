@@ -1,3 +1,17 @@
+CREATE TABLE organization (
+    organization_id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    contact_email VARCHAR(255) NOT NULL,
+    logo_filename VARCHAR(255) NOT NULL
+);
+INSERT INTO organization (name, description, contact_email, logo_filename)
+VALUES
+('BrightFuture Builders', 'A nonprofit focused on improving community infrastructure through sustainable construction projects.', 'info@brightfuturebuilders.org', 'brightfuture-logo.png'),
+('GreenHarvest Growers', 'An urban farming collective promoting food sustainability and education in local neighborhoods.', 'contact@greenharvest.org', 'greenharvest-logo.png'),
+('UnityServe Volunteers', 'A volunteer coordination group supporting local charities and service initiatives.', 'hello@unityserve.org', 'unityserve-logo.png');
+SELECT * FROM organization;
+
 CREATE TABLE service_project (
     project_id SERIAL PRIMARY KEY,
     organization_id INTEGER NOT NULL,
@@ -97,3 +111,74 @@ VALUES
  '2026-11-15');
 
  SELECT * FROM service_project;
+
+ CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE service_project_category (
+    project_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+
+    PRIMARY KEY (project_id, category_id),
+
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id)
+        REFERENCES service_project(project_id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_category
+        FOREIGN KEY (category_id)
+        REFERENCES category(category_id)
+        ON DELETE CASCADE
+);
+
+INSERT INTO category (name)
+VALUES
+('Construction'),
+('Environment'),
+('Community Support'),
+('Education'),
+('Food Assistance');
+
+INSERT INTO service_project_category (project_id, category_id)
+VALUES
+-- BrightFuture Builders
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(4, 4),
+(5, 1),
+(5, 2),
+
+-- GreenHarvest Growers
+(6, 2),
+(6, 4),
+(7, 2),
+(8, 2),
+(9, 2),
+(9, 4),
+(10, 2),
+(10, 5),
+
+-- UnityServe Volunteers
+(11, 3),
+(11, 5),
+(12, 3),
+(13, 3),
+(14, 3),
+(14, 2),
+(15, 3);
+
+SELECT
+    sp.project_id,
+    sp.title,
+    c.name AS category
+FROM service_project sp
+JOIN service_project_category spc
+    ON sp.project_id = spc.project_id
+JOIN category c
+    ON spc.category_id = c.category_id
+ORDER BY sp.project_id;

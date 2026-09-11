@@ -1,5 +1,5 @@
 /* =========================
-   RESET Y CONFIGURACIÓN BASE
+   RESET AND BASE
 ========================= */
 
 * {
@@ -8,35 +8,44 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f6f8;
     color: #2c3e50;
     line-height: 1.6;
+
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
 
 
 /* =========================
-   NAVEGACIÓN
+   NAVIGATION
 ========================= */
 
 nav {
     background-color: #1f3a5f;
     padding: 0 2rem;
+
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 nav ul {
     max-width: 1100px;
     margin: 0 auto;
+
     list-style: none;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
     gap: 2rem;
 }
 
@@ -46,34 +55,41 @@ nav li {
 
 nav a {
     display: block;
+
     padding: 1rem 0;
 
     color: #ffffff;
     text-decoration: none;
+
     font-weight: 600;
 
-    transition: color 0.2s ease,
-                transform 0.2s ease;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus {
     color: #9ed0ff;
+
     transform: translateY(-2px);
 }
 
 
 /* =========================
-   CONTENIDO PRINCIPAL
+   MAIN CONTENT
 ========================= */
 
 main {
     width: min(1100px, 90%);
+
     margin: 3rem auto;
     padding: 2.5rem;
 
     background-color: #ffffff;
 
     border-radius: 12px;
+
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 
     flex: 1;
@@ -81,28 +97,50 @@ main {
 
 main h1 {
     color: #1f3a5f;
+
     font-size: 2.3rem;
-    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    margin-bottom: 1.25rem;
 }
 
 main h2 {
     color: #3572a5;
+
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+
+    margin-bottom: 0.75rem;
 }
 
 main p {
-    margin-bottom: 1.5rem;
     color: #555;
+
+    margin-bottom: 1.25rem;
 }
 
 
 /* =========================
-   LOGO PRINCIPAL
+   LINKS
+========================= */
+
+main a {
+    color: #25689c;
+
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   MAIN LOGO
 ========================= */
 
 .main-logo {
     display: block;
+
     max-width: 420px;
     width: 100%;
     height: auto;
@@ -114,49 +152,119 @@ main p {
 
 
 /* =========================
-   LISTA DE ORGANIZACIONES
+   GENERAL LISTS
 ========================= */
 
 main ul {
     list-style: none;
+
     display: grid;
+
     gap: 1rem;
 }
 
 main ul li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
     padding: 1rem 1.25rem;
 
     background-color: #f8fafc;
+
     border: 1px solid #e2e8f0;
     border-radius: 10px;
 
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 main ul li:hover {
     transform: translateY(-3px);
+
+    border-color: #cbd5e1;
+
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-main ul li img {
+
+/* =========================
+   ORGANIZATIONS
+========================= */
+
+.organization-list li {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.organization-list img {
     width: 70px;
     height: 70px;
 
     object-fit: contain;
 
+    flex-shrink: 0;
+
     background-color: #ffffff;
+
     padding: 5px;
 
     border-radius: 8px;
 }
 
-main ul li strong {
+.organization-list strong {
     color: #1f3a5f;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-list li {
+    display: block;
+
+    border-left: 5px solid #3572a5;
+}
+
+.project-list li:hover {
+    border-left-color: #1f3a5f;
+}
+
+.project-list strong {
+    color: #1f3a5f;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-list {
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+    );
+}
+
+.category-list li {
+    text-align: center;
+
+    font-weight: 600;
+
+    color: #1f3a5f;
+
+    padding: 1.25rem;
+}
+
+
+/* =========================
+   EMPTY / SIMPLE PAGE TEXT
+========================= */
+
+.page-intro {
+    max-width: 750px;
 }
 
 
@@ -171,6 +279,7 @@ footer {
     color: #ffffff;
 
     text-align: center;
+
     padding: 1.25rem;
 }
 
@@ -180,27 +289,97 @@ footer p {
 
 
 /* =========================
+   HAMBURGER MENU
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    background-color: transparent;
+    color: #ffffff;
+
+    border: 2px solid transparent;
+    border-radius: 8px;
+
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+
+    padding: 0.4rem 0.6rem;
+
+    transition:
+        transform 0.35s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.menu-toggle:hover {
+    color: #9ed0ff;
+    border-color: #9ed0ff;
+}
+
+.menu-toggle.active {
+    transform: rotate(90deg);
+
+    background-color: #ffffff;
+    color: #1f3a5f;
+
+    border-color: #9ed0ff;
+}
+/* =========================
    RESPONSIVE
 ========================= */
 
 @media (max-width: 700px) {
 
-    nav {
-        padding: 0 1rem;
+      nav {
+        padding: 0.5rem 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 0;
-        padding: 0.5rem 0;
-    }
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transform: translateY(-10px);
+
+    padding: 0;
+
+    transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        transform 0.35s ease,
+        padding 0.35s ease;
+}
+
+nav ul.active {
+    max-height: 300px;
+    opacity: 1;
+
+    transform: translateY(0);
+
+    padding: 0.5rem 0;
+}
 
     nav a {
-        padding: 0.6rem 0;
+        padding: 0.75rem;
+        text-align: center;
     }
+
 
     main {
         width: 92%;
+
         margin: 1.5rem auto;
         padding: 1.5rem;
     }
@@ -213,13 +392,20 @@ footer p {
         font-size: 1.3rem;
     }
 
-    main ul li {
+    .organization-list li {
         flex-direction: column;
-        align-items: flex-start;
+
+        align-items: center;
+
+        text-align: center;
     }
 
-    main ul li img {
+    .organization-list img {
         width: 60px;
         height: 60px;
+    }
+
+    .category-list {
+        grid-template-columns: 1fr;
     }
 }
