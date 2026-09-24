@@ -28,7 +28,9 @@ app.use((req, res, next) => {
     }
     next(); // Pass control to the next middleware or route
 });
-
+// Allow Express to receive and process common POST data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Middleware to make NODE_ENV available to all templates
 app.use((req, res, next) => {
     res.locals.NODE_ENV = NODE_ENV;
