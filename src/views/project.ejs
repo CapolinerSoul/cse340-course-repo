@@ -39,5 +39,13 @@
         <% }); %>
     </p>
 </main>
+<div class="project-actions">
+    <a href="/assign-categories/<%= projectDetails.project_id %>" class="btn btn-secondary">
+        Change Project Categories
+    </a>
 
+    <a href="/edit-project/<%= projectDetails.project_id %>" class="btn btn-primary">
+        Edit Project
+    </a>
+</div>
 <%- include('partials/footer') %>

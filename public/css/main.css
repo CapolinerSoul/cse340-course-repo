@@ -409,3 +409,75 @@ nav ul.active {
         grid-template-columns: 1fr;
     }
 }
+/* =========================
+   PROJECT ACTIONS
+========================= */
+
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary {
+    background-color: #1f3a5f;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #e9edf2;
+    color: #1f3a5f;
+    border: 1px solid #cbd3dc;
+}
+
+.btn-primary:hover {
+    background-color: #172b45;
+}
+
+.btn-secondary:hover {
+    background-color: #dce2e8;
+}
+/* Flash message styles */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.alert.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
