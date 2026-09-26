@@ -62,7 +62,7 @@ router.get('/new-project', showNewProjectForm);
 router.post('/new-project', projectValidation, processNewProjectForm);
 
 router.get('/edit-project/:id', showEditProjectForm);
-router.post('/edit-project/:id', processEditProjectForm);
+router.post('/edit-project/:id', projectValidation, processEditProjectForm);
 
 
 // Categories
