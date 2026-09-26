@@ -481,3 +481,12 @@ nav ul.active {
     background-color: #d1ecf1;
     border-color: #bee5eb;
 }
+
+.project-actions,
+.category-actions,
+.organization-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}

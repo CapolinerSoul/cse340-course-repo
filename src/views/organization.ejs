@@ -21,7 +21,11 @@
             </li>
         <% }) %>
     </ul>
-        <p><a href="/edit-organization/<%= organizationDetails.organization_id %>">Edit Organization</a></p>
+        <div class="organization-actions">
+    <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="btn btn-primary">
+        Edit Organization
+    </a>
+</div>
 </main>
 
 <%- include('partials/footer') %>

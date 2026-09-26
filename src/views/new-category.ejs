@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="form-errors">
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form action="/new-category" method="POST">
+
+        <div class="form-group">
+            <label for="name">Category Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="<%= formData.name || '' %>"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Create Category
+        </button>
+
+    </form>
+</main>
+
+<%- include('partials/footer') %>
