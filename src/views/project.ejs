@@ -39,6 +39,7 @@
         <% }); %>
     </p>
 </main>
+<% if (user && user.role_name === 'admin') { %>
 <div class="project-actions">
     <a href="/assign-categories/<%= projectDetails.project_id %>" class="btn btn-secondary">
         Change Project Categories
@@ -48,4 +49,5 @@
         Edit Project
     </a>
 </div>
+<% } %>
 <%- include('partials/footer') %>

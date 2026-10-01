@@ -11,10 +11,12 @@
         </li>
     <% }); %>
 </ul>
+<% if (user && user.role_name === 'admin') { %>
 <div class="category-actions">
     <a href="/new-category" class="btn btn-primary">
         Add New Category
     </a>
 </div>
+<% } %>
 </main>
 <%- include('partials/footer') %>

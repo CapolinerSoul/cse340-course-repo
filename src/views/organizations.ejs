@@ -21,12 +21,13 @@
         <% }); %>
 
     </ul>
-
+    <% if (user && user.role_name === 'admin') { %>
     <div class="organization-actions">
     <a href="/new-organization" class="btn btn-primary">
         Add New Organization
     </a>
     </div>
+    <% } %>
 </main>
 
 <%- include('partials/footer') %>

@@ -21,7 +21,7 @@
             </li>
         <% }); %>
     </ul>
-
+    <% if (user && user.role_name === 'admin') { %>
     <div class="category-actions">
     <a
         href="/edit-category/<%= categoryDetails.category_id %>"
@@ -30,6 +30,7 @@
         Edit Category
     </a>
     </div>
+    <% } %>
 </main>
 
 <%- include('partials/footer') %>
