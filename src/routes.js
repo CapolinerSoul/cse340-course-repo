@@ -8,7 +8,8 @@ import {
     processLoginForm,
     processLogout,
     showDashboard,
-    requireLogin
+    requireLogin,
+    showUsersPage
 } from './controllers/users.js';
 
 import { showHomePage } from './controllers/index.js';
@@ -243,6 +244,15 @@ router.get(
     showDashboard
 );
 
+// =========================
+// Users - Admin only
+// =========================
+
+router.get(
+    '/users',
+    requireRole('admin'),
+    showUsersPage
+);
 
 // =========================
 // Error Testing

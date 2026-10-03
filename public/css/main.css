@@ -490,3 +490,334 @@ nav ul.active {
     margin-top: 1.5rem;
     flex-wrap: wrap;
 }
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-card {
+    max-width: 750px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card h1 {
+    color: #1f3a5f;
+    margin-top: 0;
+}
+
+.dashboard-welcome {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-info {
+    display: grid;
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #f5f7f9;
+    border-radius: 8px;
+}
+
+.info-label {
+    color: #1f3a5f;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   USERS
+========================= */
+
+.users-section {
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.users-section h1 {
+    color: #1f3a5f;
+}
+
+.page-description {
+    margin-bottom: 1.5rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.users-table th {
+    background-color: #1f3a5f;
+    color: #ffffff;
+}
+
+.users-table tbody tr:hover {
+    background-color: #f5f7f9;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 0.3rem 0.65rem;
+    background-color: #e9edf2;
+    color: #1f3a5f;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.users-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   DASHBOARD / USERS MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .dashboard-card {
+        padding: 1.25rem;
+        margin: 1rem 0;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 0.75rem;
+    }
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.form-container {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 2rem auto;
+    padding: 2rem;
+
+    background-color: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1,
+.form-container h2 {
+    color: #1f3a5f;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+
+/* Form layout */
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+
+/* Individual form fields */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+
+/* Labels */
+
+.form-group label {
+    color: #1f3a5f;
+
+    font-weight: 600;
+}
+
+
+/* Inputs */
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 0.75rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    border: 1px solid #cbd3dc;
+    border-radius: 6px;
+
+    background-color: #ffffff;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+
+    border-color: #1f3a5f;
+
+    box-shadow: 0 0 0 3px rgba(31, 58, 95, 0.12);
+}
+
+
+/* Textareas */
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* Form buttons */
+
+.form-actions {
+    display: flex;
+
+    gap: 1rem;
+
+    margin-top: 0.5rem;
+
+    flex-wrap: wrap;
+}
+
+
+/* Submit buttons */
+
+.form-container button[type="submit"] {
+    padding: 0.65rem 1rem;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #1f3a5f;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: #172b45;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Validation errors */
+
+.form-errors {
+    margin-bottom: 1.5rem;
+
+    padding: 1rem;
+
+    border-radius: 6px;
+
+    background-color: #f8e7e7;
+}
+
+.form-errors ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.form-errors li {
+    margin-bottom: 0.25rem;
+}
+
+
+/* Small form text */
+
+.form-help {
+    font-size: 0.9rem;
+    color: #5f6873;
+}
+
+
+/* =========================
+   FORM RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .form-container {
+        margin: 1rem 0;
+        padding: 1.25rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn,
+    .form-actions button {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

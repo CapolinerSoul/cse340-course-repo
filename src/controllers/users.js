@@ -1,4 +1,4 @@
-import { createUser, authenticateUser } from "../models/users.js";
+import { createUser, authenticateUser, getAllUsers } from "../models/users.js";
 
 import bcrypt from 'bcrypt';
 
@@ -75,11 +75,13 @@ const requireLogin = (req, res, next) => {
 };
 
 const showDashboard = (req, res) => {
-    const user = req.session.user;
-    res.render('dashboard', { 
+    const { name, email, role_name } = req.session.user;
+
+    res.render('dashboard', {
         title: 'Dashboard',
-        name: user.name,
-        email: user.email
+        name,
+        email,
+        role_name
     });
 };
 
@@ -102,4 +104,19 @@ const requireRole = (role) => {
     };
 };
 
-export { requireRole, requireLogin, showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLogout, processLoginForm, showDashboard };
+const showUsersPage = async (req, res) => {
+    try {
+        const users = await getAllUsers();
+
+        res.render('users', {
+            title: 'Registered Users',
+            users
+        });
+    } catch (error) {
+        console.error('Error retrieving users:', error);
+        req.flash('error', 'Unable to retrieve users.');
+        res.redirect('/dashboard');
+    }
+};
+
+export { showUsersPage, requireRole, requireLogin, showUserRegistrationForm, processUserRegistrationForm, showLoginForm, processLogout, processLoginForm, showDashboard };
