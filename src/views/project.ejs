@@ -38,7 +38,41 @@
             </a>
         <% }); %>
     </p>
-</main>
+    <% if (user) { %>
+
+    <section class="volunteer-section">
+
+        <% if (volunteering) { %>
+
+            <p class="volunteer-status">
+                You are volunteering for this project!
+            </p>
+
+            <form
+                action="/project/<%= projectDetails.project_id %>/remove-volunteer"
+                method="POST"
+            >
+                <button type="submit" class="btn btn-secondary">
+                    Remove Myself as Volunteer
+                </button>
+            </form>
+
+        <% } else { %>
+
+            <form
+                action="/project/<%= projectDetails.project_id %>/volunteer"
+                method="POST"
+            >
+                <button type="submit" class="btn btn-primary">
+                    Volunteer for This Project
+                </button>
+            </form>
+
+        <% } %>
+
+    </section>
+
+<% } %>
 <% if (user && user.role_name === 'admin') { %>
 <div class="project-actions">
     <a href="/assign-categories/<%= projectDetails.project_id %>" class="btn btn-secondary">
@@ -50,4 +84,6 @@
     </a>
 </div>
 <% } %>
+</main>
+
 <%- include('partials/footer') %>

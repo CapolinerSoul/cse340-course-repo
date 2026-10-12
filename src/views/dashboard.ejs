@@ -33,6 +33,66 @@
             </div>
         <% } %>
     </section>
+
+    <section class="volunteer-projects">
+
+    <h2>My Volunteer Projects</h2>
+
+    <% if (volunteerProjects.length === 0) { %>
+
+        <p>You haven't volunteered for any projects yet.</p>
+
+        <a href="/projects" class="btn btn-primary">
+            Browse Projects
+        </a>
+
+    <% } else { %>
+
+        <div class="volunteer-list">
+
+            <% volunteerProjects.forEach(project => { %>
+
+                <article class="volunteer-card">
+
+                    <h3>
+                        <a href="/project/<%= project.project_id %>">
+                            <%= project.title %>
+                        </a>
+                    </h3>
+
+                    <p>
+                        <strong>Organization:</strong>
+                        <%= project.organization_name %>
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        <%= project.location %>
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        <%= new Date(project.date).toLocaleDateString() %>
+                    </p>
+
+                    <form
+                        action="/project/<%= project.project_id %>/remove-volunteer"
+                        method="POST"
+                    >
+                        <button type="submit" class="btn btn-secondary">
+                            Remove Myself
+                        </button>
+                    </form>
+
+                </article>
+
+            <% }); %>
+
+        </div>
+
+    <% } %>
+
+    </section>
 </main>
 
 <%- include('partials/footer') %>

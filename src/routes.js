@@ -15,6 +15,11 @@ import {
 import { showHomePage } from './controllers/index.js';
 
 import {
+    processVolunteerSignup,
+    processVolunteerRemoval
+} from './controllers/volunteers.js';
+
+import {
     showOrganizationsPage,
     showOrganizationDetailsPage,
     showNewOrganizationForm,
@@ -242,6 +247,22 @@ router.get(
     '/dashboard',
     requireLogin,
     showDashboard
+);
+
+// =========================
+// Volunteer routes - Login required
+// =========================
+
+router.post(
+    '/project/:projectId/volunteer',
+    requireLogin,
+    processVolunteerSignup
+);
+
+router.post(
+    '/project/:projectId/remove-volunteer',
+    requireLogin,
+    processVolunteerRemoval
 );
 
 // =========================

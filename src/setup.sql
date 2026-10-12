@@ -182,3 +182,47 @@ JOIN service_project_category spc
 JOIN category c
     ON spc.category_id = c.category_id
 ORDER BY sp.project_id;
+
+CREATE TABLE roles (
+    role_id SERIAL PRIMARY KEY,
+    role_name VARCHAR(50) UNIQUE NOT NULL,
+    role_description TEXT
+);
+
+INSERT INTO roles (role_name, role_description) VALUES 
+    ('user', 'Standard user with basic access'),
+    ('admin', 'Administrator with full system access');
+
+-- Verify the data was inserted
+SELECT * FROM roles;
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role_id INTEGER REFERENCES roles(role_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS project_volunteer (
+    user_id INTEGER NOT NULL,
+    project_id INTEGER NOT NULL,
+
+    PRIMARY KEY (user_id, project_id),
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (project_id)
+        REFERENCES service_project(project_id)
+        ON DELETE CASCADE
+);
+
+-- Join users and roles to see complete information
+SELECT u.user_id, u.name, u.email, r.role_name, r.role_description
+FROM users u
+JOIN roles r ON u.role_id = r.role_id;
+
+UPDATE users SET role_id = (SELECT role_id FROM roles WHERE role_name = 'admin') WHERE email = 'admin@example.com';
